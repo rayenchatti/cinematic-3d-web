@@ -1,0 +1,4 @@
+schema_version: "1.1"
+name: sneaker-assembles-futuristic
+expected_outcome: |
+  A scene spec/beat sheet is written, then a scroll-driven 3D landing page is built where shoe parts fly in and assemble, the camera orbits the finished shoe, and feature text appears in sync; it builds.

@@ -1,0 +1,6 @@
+schema_version: "1.1"
+name: add-bg-and-magnet-existing-site
+expected_outcome: |
+  The existing site keeps its content and gains a fixed, mouse-reactive WebGL background in purple tones and a magnetic Hire me button; it builds.
+context:
+  scaffold_script: place-files.sh

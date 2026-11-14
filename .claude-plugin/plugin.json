@@ -1,0 +1,13 @@
+{
+  "name": "cinematic-3d-web",
+  "version": "2.0.0",
+  "description": "Direct and build cinematic, scroll-driven 3D scenes and websites with Claude: turns loose descriptions into a precise, confirmed scene spec, then builds it on a proven React Three Fiber architecture. Includes a full 3D portfolio as a worked example.",
+  "author": {
+    "name": "Rayen Chatti",
+    "url": "https://github.com/rayenchatti"
+  },
+  "homepage": "https://github.com/rayenchatti/cinematic-3d-web",
+  "repository": "https://github.com/rayenchatti/cinematic-3d-web",
+  "license": "MIT",
+  "keywords": ["3d", "three.js", "react-three-fiber", "webgl", "scroll-animation", "framer-motion", "nextjs", "portfolio", "landing-page", "motion-design"]
+}

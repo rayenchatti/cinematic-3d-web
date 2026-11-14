@@ -1,0 +1,14 @@
+{
+  "name": "cinematic-3d-web",
+  "owner": {
+    "name": "Rayen Chatti",
+    "url": "https://github.com/rayenchatti"
+  },
+  "plugins": [
+    {
+      "name": "cinematic-3d-web",
+      "source": "./",
+      "description": "Direct and build cinematic, scroll-driven 3D scenes and websites — from a loose description to the scene you actually pictured."
+    }
+  ]
+}

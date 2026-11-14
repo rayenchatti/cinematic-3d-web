@@ -1,0 +1,4 @@
+schema_version: "1.1"
+name: movie-intro-direction-only
+expected_outcome: |
+  No code; a precise scene spec with a scroll beat sheet, concrete translations of 'movie intro / dark / epic', a named key moment, and a few questions with default answers.

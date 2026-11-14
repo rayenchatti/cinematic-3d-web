@@ -1,0 +1,6 @@
+schema_version: "1.1"
+name: shred-text-existing-site
+expected_outcome: |
+  The intro paragraph splits into strips that fly away driven by scroll, revealing the cards; original content otherwise unchanged; text stays accessible; it builds.
+context:
+  scaffold_script: place-files.sh
