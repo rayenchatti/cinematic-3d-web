@@ -2,7 +2,7 @@
 
 An ancient stone door stands in a dusky, foggy ruin. As you scroll, carved stone doors grind open,
 a shaft of warm sunlight falls through the doorway onto the ground, the camera passes through a
-white-out, and a bright section appears on the other side. Everything is generated in code — no
+white-out, and comes out into the section on the other side — left empty for you to fill. Everything is generated in code — no
 models or textures to download.
 
 | Closed, in the fog | Doors grinding open | The threshold |
@@ -52,4 +52,4 @@ natural* section of `references/styles.md`.
 
 Copy the five files into `src/components/` of a project made with `scripts/create-site.mjs`
 (needs `three`, `@react-three/fiber`, `@react-three/drei`, `framer-motion`), render
-`<DoorSection />` in a page, and change what's behind the door in `DoorSection.tsx` (`Lab`).
+`<DoorSection />` in a page, and put your own section inside `Beyond` in `DoorSection.tsx`.

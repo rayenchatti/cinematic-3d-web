@@ -1,5 +1,5 @@
 // Shared scroll timeline for "The Door". The 3D scene (DoorScene) and the DOM layers (DoorSection:
-// captions, white-out, the Lab) all read from here, so the moment you cross the threshold is the
+// captions, white-out, the section behind the door) all read from here, so the moment you cross the threshold is the
 // same moment everywhere. Numbers are fractions of the section's scroll (0 = pinned, 1 = released).
 
 export const GLOW = '#FFC874' // warm light from behind the door
@@ -17,8 +17,7 @@ export const ANTICIPATION: [number, number] = [0.12, 0.3] // lines light up, it 
 export const OPEN: [number, number] = [0.3, 0.55] // the doors swing open
 export const THRESHOLD: [number, number] = [0.55, 0.7] // camera passes through — key moment
 export const WHITEOUT: [number, number] = [0.6, 0.68] // screen floods with light…
-export const RELEASE: [number, number] = [0.72, 0.8] // …and clears into the Lab
-export const ARRIVAL: [number, number] = [0.72, 0.86] // cards drift in, title rises
+export const RELEASE: [number, number] = [0.72, 0.8] // …and clears into the section behind the door
 
 /* ── Door ── */
 export const OPENING_W = 2.2 // clear width of the doorway
@@ -62,10 +61,3 @@ export function cameraAt(p: number) {
   const t = b.at === THRESHOLD[1] ? easeIn(raw) : smoother(raw)
   return { z: a.z + (b.z - a.z) * t, y: a.y + (b.y - a.y) * t, fov: a.fov + (b.fov - a.fov) * t }
 }
-
-/* ── The Lab (behind the door) ── */
-export const PROJECTS = [
-  { name: 'Project One', line: 'Replace with your project — one line on what it does.' },
-  { name: 'Project Two', line: 'Replace with your project — one line on what it does.' },
-  { name: 'Project Three', line: 'Replace with your project — one line on what it does.' },
-]
