@@ -1,8 +1,8 @@
 // Shared scroll timeline for "The Door". The 3D scene (DoorScene) and the DOM layers (DoorSection:
-// captions, white-out, the section behind the door) all read from here, so the moment you cross the threshold is the
+// captions, white-out, the Lab) all read from here, so the moment you cross the threshold is the
 // same moment everywhere. Numbers are fractions of the section's scroll (0 = pinned, 1 = released).
 
-export const GLOW = '#FFC874' // warm light from behind the door
+export const GLOW = '#FFC874' // warm white-gold light from behind the door
 
 export const clamp01 = (v: number) => Math.min(1, Math.max(0, v))
 export const range = (v: number, a: number, b: number) => clamp01((v - a) / (b - a))
@@ -41,23 +41,49 @@ export const whiteout = (p: number) => smooth(range(p, WHITEOUT[0], WHITEOUT[1])
 // The 3D world is gone once the light has covered it
 export const sceneVisible = (p: number) => 1 - range(p, WHITEOUT[1], RELEASE[0])
 
-/* ── Camera: z keyframes (the door stands at z = 0), height, FOV ── */
+/* ── Camera: keyframes (the door stands at z = 0), height, FOV ── */
 type Key = { at: number; z: number; y: number; fov: number }
 const KEYS: Key[] = [
   { at: 0, z: 12.5, y: 1.3, fov: 38 },
-  { at: INTRO[1], z: 12.5, y: 1.3, fov: 38 },
-  { at: ANTICIPATION[1], z: 9.5, y: 1.5, fov: 38 },
-  { at: OPEN[1], z: 5.2, y: 1.8, fov: 42 },
-  { at: THRESHOLD[1], z: -2.5, y: 2.0, fov: 72 }, // through the doorway, lens widening with speed
+  { at: INTRO[1], z: 12.2, y: 1.32, fov: 38 },
+  { at: ANTICIPATION[1], z: 9.4, y: 1.5, fov: 38 },
+  { at: OPEN[1], z: 5.4, y: 1.75, fov: 42 },
+  { at: THRESHOLD[0] + 0.1, z: 0.4, y: 1.9, fov: 56 }, // walking into the light
+  { at: THRESHOLD[1], z: -2.5, y: 2.0, fov: 70 }, // through the doorway, lens widening with speed
   { at: 1, z: -4, y: 2.0, fov: 72 },
 ]
-export function cameraAt(p: number) {
-  let i = 0
-  while (i < KEYS.length - 2 && p > KEYS[i + 1].at) i++
-  const a = KEYS[i]
-  const b = KEYS[i + 1]
-  // The dive through the door accelerates (ease-in); everything else is smooth
-  const raw = range(p, a.at, b.at)
-  const t = b.at === THRESHOLD[1] ? easeIn(raw) : smoother(raw)
-  return { z: a.z + (b.z - a.z) * t, y: a.y + (b.y - a.y) * t, fov: a.fov + (b.fov - a.fov) * t }
+
+// Monotone cubic (Fritsch–Carlson) through the keys: the camera never stops between beats and
+// never overshoots a key — one continuous move instead of walk, stop, walk.
+function monotone(get: (k: Key) => number) {
+  const n = KEYS.length
+  const x = KEYS.map((k) => k.at)
+  const y = KEYS.map(get)
+  const d: number[] = []
+  for (let i = 0; i < n - 1; i++) d.push((y[i + 1] - y[i]) / (x[i + 1] - x[i]))
+  const m: number[] = [d[0]]
+  for (let i = 1; i < n - 1; i++) m.push(d[i - 1] * d[i] <= 0 ? 0 : (3 * (d[i - 1] + d[i])) / ((2 * d[i] + d[i - 1]) / d[i - 1] + (d[i] + 2 * d[i - 1]) / d[i]))
+  m.push(d[n - 2])
+  // Start and end at rest
+  m[0] = 0
+  m[n - 1] = 0
+  return (p: number) => {
+    const v = clamp01(p)
+    let i = 0
+    while (i < n - 2 && v > x[i + 1]) i++
+    const h = x[i + 1] - x[i]
+    const t = (v - x[i]) / h
+    const t2 = t * t
+    const t3 = t2 * t
+    return (2 * t3 - 3 * t2 + 1) * y[i] + (t3 - 2 * t2 + t) * h * m[i] + (-2 * t3 + 3 * t2) * y[i + 1] + (t3 - t2) * h * m[i + 1]
+  }
 }
+const camZ = monotone((k) => k.z)
+const camY = monotone((k) => k.y)
+const camFov = monotone((k) => k.fov)
+export function cameraAt(p: number) {
+  return { z: camZ(p), y: camY(p), fov: camFov(p) }
+}
+
+// Exposure: eyes adjusting to the light as you cross — the scene itself burns to white
+export const exposureAt = (p: number) => 1 + Math.pow(range(p, THRESHOLD[0] + 0.04, WHITEOUT[1]), 2) * 9

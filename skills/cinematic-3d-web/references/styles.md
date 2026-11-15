@@ -75,30 +75,52 @@ smooth or perfectly clean surfaces, pure black or pure grey backgrounds.
   door into a cool blue-grey dusk).
 
 **Materials**
-- Textures with relief: colour map + bump/normal map, roughness 0.85–1 for stone, earth, wood.
-  `ruinTextures.ts` generates weathered stone (mottling, pits, cracks, moss), carved slabs and
-  gravelly earth procedurally — no downloads. For photoreal close-ups, use real PBR texture sets
-  (ambientCG, Poly Haven — CC0) if the person accepts downloaded assets.
-- Imperfection everywhere: blocks slightly shifted and rotated, a sagging lintel, broken
-  pieces, chipped edges (`RoundedBox` radius 0.03–0.06 instead of sharp boxes).
+- Textures with relief: colour map + normal map (derive it from the height with a Sobel filter),
+  roughness 0.85–1 for stone, earth, wood. `ruinTextures.ts` generates weathered stone (mottling,
+  pits, cracks, rain streaks, lichen), carved slabs and gravelly earth procedurally — no downloads.
+  For photoreal close-ups, use real PBR texture sets (ambientCG, Poly Haven — CC0) if the person
+  accepts downloaded assets.
+- Draw every texture at the real proportions of the surface it covers, or project UVs in world
+  units. A square texture stretched down a tall door turns stone grain into wood grain.
+- Imperfection in the *shape*, not just the texture: subdivided blocks pushed in by ridged noise
+  near edges and corners (sharp chips, broken corners), slightly uneven faces, natural rocks from a
+  noise-displaced sphere (`ruinGeometry.ts`). Keep cut stone crisp; too much rounding reads as
+  pillows. Vertex colours vary each block's tone, darken crevices and bases, add moss on top faces.
 - No `toneMapped={false}` on solid objects — that's what makes things glow unnaturally.
 
 **Atmosphere** (this is what makes empty space disappear)
-- `fogExp2` in the same colour as the background, density 0.04–0.06.
-- Layered fog *sprites* (soft noisy alpha texture, normal blending, opacity 0.12–0.4) at ground
-  level in front, and big banks on the sides and behind the subject, drifting slowly. Fog near a
-  light source takes its colour.
-- Dust motes everywhere (dim), bright only where a beam catches them.
+- Real volumetric fog as a post-processing effect (`VolumetricFog.ts`): ray-march each view ray to
+  the depth buffer, dense near the ground, shaped by drifting 3D noise, banked at the sides,
+  closing in completely in the distance. Give distant fog the *sky's* colour for that direction,
+  or a horizon line shows. Make fog lighter than the ground, or it's invisible.
+- Light shafts belong to the fog: light it inside the light's volume (projected through the
+  opening), with forward scattering so shafts glow when you look toward the light.
+- `fogExp2` matching the horizon for distant geometry; dust motes everywhere (dim), bright only
+  where a beam catches them.
+- Cheaper fallback when post-processing isn't wanted: layered fog *sprites* (soft noisy alpha,
+  normal blending, opacity 0.12–0.4) at ground level and big banks at the sides.
+
+**Finish** (post-processing, in this order)
+- Ambient occlusion (N8AO, half resolution) to ground everything, the volumetric fog, bloom only
+  above HDR 1.0 (the light source), AgX tone mapping (render the canvas `flat`), a light
+  contrast grade, vignette, film grain, SMAA.
+- It's expensive: add quality tiers with drei `PerformanceMonitor` (drop AO first, then
+  resolution), start phones at the lighter tier, and keep a `?capture` mode at full quality for
+  recordings.
 
 **Ground**
 - Never a flat plane: displace a dense grid with fractal noise (`terrain.ts` `heightAt`), raise
-  it toward the edges, flatten a worn path where people walk.
-- Scatter detail with `instancedMesh`: hundreds of pebbles (displaced icosahedrons) and dry grass
-  clumps (a few bent blade triangles), placed with `heightAt` so they sit on the surface.
+  it toward the edges, flatten a worn path where people walk. Vary its colour at a large scale in
+  the shader so the texture never visibly repeats.
+- Scatter detail with `instancedMesh`: hundreds of pebbles and grass clumps (tapered, curved
+  blades swaying with a vertex-shader wind), placed with `heightAt` so they sit on the surface.
 
 **Motion**
 - Heavy things move slowly with ease-in-out and *consequences*: camera rumble, grit falling,
-  dust puffs. Camera: handheld sway (±0.05), slow dolly, no snappy easing.
+  dust puffs, two leaves that don't move in perfect mirror. The camera follows one continuous
+  path (a monotone cubic through keyframes, never stopping between beats), with a slight step
+  bob while it walks and smooth noise shake, not sine jitter. Pair it with smooth scrolling (Lenis).
+- Crossing into bright light: ramp the exposure so the scene itself burns to white.
 
 **Pacing:** slower than other styles — longer holds, longer moves.
 

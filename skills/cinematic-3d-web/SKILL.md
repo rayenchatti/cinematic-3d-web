@@ -30,7 +30,7 @@ references/architecture.md     the pinned-scroll scene pattern, timelines, perfo
 references/styles.md           the style families (realistic, studio, neon, stylised, editorial, dreamy) and how to ask
 references/house-style.md      the neon cinematic style as exact values, and how to pick up a style from references
 references/effects.md          the template's finished scenes, dissected — copy or learn from them
-examples/ruin-door/            a realistic scene: ancient stone door, fog, dust, real light (code + notes)
+examples/ruin-door/            a realistic scene: chipped stone door, volumetric fog and light shafts (code + notes)
 references/portfolio.md        building a full portfolio from the template
 references/content-guide.md    the template's content fields
 references/portrait-rig.md     the template's living-portrait hero
@@ -163,7 +163,8 @@ These come from real failures; each one has a reason in `architecture.md`.
 - The style is chosen by the person (or the subject), never defaulted to neon; and the scene
   stays inside its style family — no glow lines in a realistic scene, no grime in a studio shot.
 - Where glow is part of the style, fake it (additive halos) rather than post-processing bloom,
-  unless the person accepts the cost.
+  unless the person accepts the cost. When a scene does use post-processing (realism usually
+  needs it), give it quality tiers that step down on slow devices.
 - All the page's content is real, readable text in the DOM — not baked into canvases only.
 - Never invent facts about a person or product in the copy; design text is fine, claims are not.
   Prices, specs, dates, stats and awards you weren't given go in as visible `[placeholders]`.

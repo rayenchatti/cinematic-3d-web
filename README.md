@@ -62,7 +62,7 @@ don't have to teach it again.
 |:-:|:-:|:-:|:-:|
 | <img src="docs/images/sneaker-1-intro.jpg" width="200" /> | <img src="docs/images/sneaker-2-assembly.jpg" width="200" /> | <img src="docs/images/sneaker-3-ignition.jpg" width="200" /> | <img src="docs/images/sneaker-4-orbit.jpg" width="200" /> |
 
-**Realistic style:** an ancient stone door in fog, grinding open as you scroll. Weathered stone, real sunlight and shadows, dust, terrain and dry grass, all generated in code ([example](skills/cinematic-3d-web/examples/ruin-door)):
+**Realistic style:** an ancient stone door in fog, grinding open as you scroll. Chipped stone, volumetric fog with light shafts through the doors, real shadows, dust, terrain and swaying grass, all generated in code with no models or downloaded textures ([example](skills/cinematic-3d-web/examples/ruin-door)):
 
 | Closed, in the fog | Doors grinding open | The threshold |
 |:-:|:-:|:-:|
@@ -179,7 +179,7 @@ skills/cinematic-3d-web/
 │   ├── video-frames.mjs         extract frames from a reference video (needs ffmpeg)
 │   ├── create-portfolio.mjs     copy the full portfolio template
 │   └── retheme.mjs              move the whole accent palette to any colour
-├── examples/ruin-door/          a realistic scene (stone door, fog, real light) with notes
+├── examples/ruin-door/          a realistic scene (stone door, volumetric fog, light shafts) with notes
 ├── template/                    a complete 3D portfolio (Next.js) — the worked example
 └── evals/                       test prompts used to measure the skill
 ```

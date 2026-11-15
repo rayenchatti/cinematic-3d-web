@@ -8,7 +8,7 @@ and stay in sync, so build new scenes on it even when the visuals are completely
 
 React 19, Next.js App Router, TypeScript, Tailwind CSS v4, Framer Motion 12, three.js +
 @react-three/fiber 9 + @react-three/drei 10. Optional: ogl (tiny WebGL, used by the portrait),
-@react-three/postprocessing (only if real bloom is needed), lucide-react icons.
+@react-three/postprocessing (for realistic scenes, or when real bloom is needed), lenis (smooth scrolling), lucide-react icons.
 
 ```bash
 npm i framer-motion three @react-three/fiber @react-three/drei

@@ -145,6 +145,9 @@ gl_FragColor = vec4(uColor * g * uIntensity, g);
   on low-end phones; it applies to the whole canvas.
 - **Fog**: `<fog attach="fog" args={['#000', near, far]} />` — black fog keeps additive glows
   from turning grey with distance.
+- **Volumetric fog and light shafts** (realistic scenes): a post-processing effect that
+  ray-marches fog to the depth buffer and lights it inside a light's volume, so shafts come
+  through openings with the right shape. Ready to copy: `examples/ruin-door/VolumetricFog.ts`.
 
 ## 5. Particles
 
