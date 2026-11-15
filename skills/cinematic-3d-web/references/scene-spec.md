@@ -10,7 +10,7 @@ checklist when you verify the result.
 ## Scene N — <name>
 
 **Idea:** one sentence — what the visitor experiences.
-**Style:** house style | <style summary from references>  (accent: #hex)
+**Style:** <family from styles.md, as chosen/confirmed in step 1> — <its concrete values for this scene: background, light, materials, accent #hex>
 **Objects:** each 3D object / DOM element in the scene, with size and material in a few words
 **Section length:** <H> screens pinned  (≈ <H-1> screens of scroll)
 
@@ -49,7 +49,7 @@ see how each cell becomes code.
 
 **Idea:** the section title gets swallowed by a black hole that tears open in the page; the camera
 dives through it into a tunnel where each achievement is a glowing gate that rushes past.
-**Style:** house style (accent #FF3B3B; gates use tier colours gold/silver/bronze)
+**Style:** neon cinematic — the house style (accent #FF3B3B; gates use tier colours gold/silver/bronze)
 **Objects:** huge faded title "ACHIEVEMENTS"; portal (vortex disc r=1.6, spinning ring, halo, 220
 orbiting sparks); 900 debris points spiralling in; tunnel of 26 thin rings; one segmented gate
 (6 arcs, r=2.6) per achievement, 12 units apart; 700 light streaks; floating typography cards.
@@ -83,7 +83,7 @@ burst into particles → particles reform as the new shape (particle reform tran
 
 **Idea:** a single roasted bean turns slowly, cracks open with a warm glow, bursts into a cloud of
 grains that swirl and condense into a ceramic cup with steam rising.
-**Style:** dark warm studio — near-black brown background (#0E0907), accent amber #E8A04C, cream
+**Style:** clean studio, dark variant — near-black brown background (#0E0907), accent amber #E8A04C, cream
 text #F2E8DC; soft top light + amber rim.
 **Objects:** bean (displaced ellipsoid, glossy brown, 1.2 units); 6,000 grain particles (sampled
 from the bean's surface, then from the cup's surface); cup (lathe geometry, glazed cream,
@@ -119,7 +119,7 @@ amber?
 
 **Idea:** you're sinking slowly through dark water toward a faint glowing title; light ripples
 across the screen and bubbles rise past.
-**Style:** deep teal-black (#03131A), accent bioluminescent cyan #4FE3E0, text #DDF4F3.
+**Style:** realistic / natural (night water) — deep teal-black (#03131A), accent bioluminescent cyan #4FE3E0, text #DDF4F3.
 **Objects:** full-screen caustics plane (shader); 300 bubbles (instanced spheres, refractive);
 200 drifting plankton points; title as 3D text with emissive edge.
 **Section length:** 3 screens pinned
@@ -138,6 +138,8 @@ across the screen and bubbles rise past.
 
 ## Checklist before showing a spec
 
+- The style family is named (asked for, or stated under "Choices I made"), and nothing in the beats
+  breaks it (no glow lines in a realistic scene).
 - Every beat has all six columns filled with decidable values.
 - There is an anticipation before every big change, and a hold after it.
 - The key moment is named.

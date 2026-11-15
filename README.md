@@ -47,6 +47,7 @@ don't have to teach it again.
 |---|---|
 | 🎯 **Directs before it builds** | Turns your description into a short **scene spec**: a beat sheet of what's on screen at each stretch of scroll, with camera, motion, light, effects and text. You approve or correct it in one message, *before* any code exists. |
 | 🗣️ **Speaks "motion"** | A vocabulary that translates ~25 vague words (*cinematic, epic, premium, dreamy, explodes, swallowed, comes alive, underwater…*) into concrete camera moves, easing, pacing, lighting and effects. |
+| 🎨 **Any style, asked not assumed** | Realistic/natural, clean studio, neon cinematic, stylised, editorial, dreamy, each with concrete rules for light, materials and atmosphere. If you don't name a style, it **asks you** before planning. |
 | 🧩 **Builds any scene, not a menu** | A technique library for camera rigs, shaders, particles, morphs, shatter, dissolve, vortex, glass, glow, atmosphere and text choreography. New ideas get built properly, not mapped to the nearest preset. |
 | 🏗️ **On a proven foundation** | Pinned scroll stages, one timeline shared by the 3D and the text (they never drift), damped cameras, reduced-motion versions, WebGL that pauses off-screen. |
 | 🎥 **Learns from references** | Give it a screen recording and it studies the motion frame by frame (`video-frames.mjs`). Show it a site or an image and it extracts the style. |
@@ -61,7 +62,13 @@ don't have to teach it again.
 |:-:|:-:|:-:|:-:|
 | <img src="docs/images/sneaker-1-intro.jpg" width="200" /> | <img src="docs/images/sneaker-2-assembly.jpg" width="200" /> | <img src="docs/images/sneaker-3-ignition.jpg" width="200" /> | <img src="docs/images/sneaker-4-orbit.jpg" width="200" /> |
 
-**The bundled portfolio template** (placeholder content, any accent colour):
+**Realistic style:** an ancient stone door in fog, grinding open as you scroll. Weathered stone, real sunlight and shadows, dust, terrain and dry grass, all generated in code ([example](skills/cinematic-3d-web/examples/ruin-door)):
+
+| Closed, in the fog | Doors grinding open | The threshold |
+|:-:|:-:|:-:|
+| <img src="docs/images/ruin-1-closed.jpg" width="270" /> | <img src="docs/images/ruin-2-open.jpg" width="270" /> | <img src="docs/images/ruin-3-threshold.jpg" width="270" /> |
+
+**The bundled portfolio template** (neon cinematic style, placeholder content, any accent colour):
 
 | Hero | About: laptop opens on scroll | Skills: orbits around a core | Achievements: black-hole tunnel |
 |:-:|:-:|:-:|:-:|
@@ -162,7 +169,8 @@ skills/cinematic-3d-web/
 │   ├── scene-spec.md            the beat-sheet format, with 3 worked examples
 │   ├── techniques.md            how to build each kind of effect
 │   ├── architecture.md          pinned-scroll scenes, shared timelines, rules from real bugs
-│   ├── house-style.md           the default look as exact values + how to pick up a style from references
+│   ├── styles.md                the style families, and how it asks when you don't pick one
+│   ├── house-style.md           the neon cinematic style as exact values + picking up a style from references
 │   ├── effects.md               the portfolio's scenes, dissected
 │   └── portfolio.md, content-guide.md, portrait-rig.md
 ├── scripts/
@@ -171,6 +179,7 @@ skills/cinematic-3d-web/
 │   ├── video-frames.mjs         extract frames from a reference video (needs ffmpeg)
 │   ├── create-portfolio.mjs     copy the full portfolio template
 │   └── retheme.mjs              move the whole accent palette to any colour
+├── examples/ruin-door/          a realistic scene (stone door, fog, real light) with notes
 ├── template/                    a complete 3D portfolio (Next.js) — the worked example
 └── evals/                       test prompts used to measure the skill
 ```
@@ -224,8 +233,8 @@ visible. Heavy effects (real bloom, glass) are used sparingly.
 - Visual verification needs a browser tool in your Claude environment. Without one, Claude says
   so and gives you a checklist.
 - Generated stand-in models are stylised, not product-accurate.
-- The house style is dark and cinematic by default. Other styles work best when you give a
-  reference.
+- The style rules are starting points; a reference image or video still gets you closest to a
+  specific look.
 
 ## Contributing
 

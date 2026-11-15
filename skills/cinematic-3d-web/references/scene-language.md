@@ -162,9 +162,13 @@ A pinned section of height H screens has `(H - 1) × 100%` of a screen's worth o
 ## 9. Translations of common vague words
 
 Use these as starting points, then adapt to the scene. Say in the spec which reading you chose.
+These describe motion and mood; they don't choose the visual style. Words like *cinematic* or
+*epic* work in any style family — settle the family first (`styles.md`), then apply these.
 
 | They say | Usually means |
 |---|---|
+| **Realistic / photoreal / real-world** | The realistic family in `styles.md`: physically motivated light with real shadows, weathered textured materials with relief, fog and dust that fill empty space, uneven ground with scattered detail, no emissive lines or neon |
+| **Ancient / ruin / abandoned** | Realistic family; stone with cracks, moss and chipped edges, imperfect stacked construction, rubble, dusk or overcast light, fog, dust in light shafts, heavy slow motion with grit and rumble |
 | **Cinematic** | Slow camera moves on ease-in-out, long lens, low-key light with rim, holds between beats, letterbox-like framing, grain + vignette, no bouncy UI easing |
 | **Epic / dramatic** | Scale contrast (tiny camera, huge object), low angle, slow push-in, anticipation before big moments, flash or light burst on impact, particles, deep shadows |
 | **Smooth / buttery** | Damped camera following (k≈5), ease-out reveals, no snapping, 60fps (fewer particles), consistent pacing |

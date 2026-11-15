@@ -44,6 +44,7 @@ your description covers these points. One sentence each is plenty:
 | **The subject** | "The shoe itself, front and centre" |
 | **What happens as you scroll** | "It assembles from floating pieces, then the camera circles it" |
 | **The key moment**: the one frame that must land | "The moment it's complete and lights up" |
+| **The style** | "Realistic, like an ancient ruin", "clean product shot", "neon", "toon". If you skip it, Claude asks you to pick one |
 | **The feeling** | "Futuristic, but clean, not cluttered" |
 | **The text** | "Four features appear while it turns" |
 | **Constraints** | "Brand colour #D4FF3A, our site is Next.js, must work on phones" |

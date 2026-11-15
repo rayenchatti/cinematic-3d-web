@@ -1,10 +1,11 @@
-# House style, and picking up other styles
+# The neon cinematic style, and picking up other styles
 
-## The house style
+## Neon cinematic (the house style)
 
-The default look of this skill, taken from the author's portfolio (rayenchatti.vercel.app). Use it
-when the person has no style of their own, and as the reference point when they say "like that,
-but…". It is defined by values, not adjectives, so new scenes match it exactly.
+The look of the author's portfolio (rayenchatti.vercel.app), written as exact values. It is one
+of the style families in `styles.md` — use it when the person picks it, asks for something
+futuristic/tech/gaming, or says "like your portfolio". It is **not** the default: when no style is
+given, ask (SKILL.md, step 1).
 
 **Mood:** dark, glossy, cinematic; one hot accent colour glowing out of near-black; slow,
 weighty camera; big confident typography; everything slightly alive.

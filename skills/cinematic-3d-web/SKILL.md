@@ -15,9 +15,10 @@ This skill closes that gap in two moves: **direct before you build** (turn the d
 a precise, confirmed scene spec) and **build on a proven base** (an architecture and technique
 library that make the spec reliable to implement and smooth to scroll).
 
-It works for any scene — the scenes in the bundled portfolio (a laptop that opens, an orbiting
-skills atom, logos that ignite and burn, a black-hole tunnel) are worked examples of the method,
-not a menu to pick from.
+It works for any scene and any style — realistic ruins, clean product shots, neon tech, toon
+worlds, editorial minimalism. The bundled portfolio (a laptop that opens, an orbiting skills atom,
+logos that ignite and burn, a black-hole tunnel) and the realistic ruin door in `examples/` are
+worked examples of the method, not a menu to pick from.
 
 ## Files
 
@@ -26,8 +27,10 @@ references/scene-language.md   precise motion vocabulary + translations of vague
 references/scene-spec.md       the scene spec / storyboard format, with worked examples
 references/techniques.md       how to build each kind of effect (camera, shaders, particles, text…)
 references/architecture.md     the pinned-scroll scene pattern, timelines, performance, gotchas
-references/house-style.md      the default visual style, and how to pick up a style from references
+references/styles.md           the style families (realistic, studio, neon, stylised, editorial, dreamy) and how to ask
+references/house-style.md      the neon cinematic style as exact values, and how to pick up a style from references
 references/effects.md          the template's finished scenes, dissected — copy or learn from them
+examples/ruin-door/            a realistic scene: ancient stone door, fog, dust, real light (code + notes)
 references/portfolio.md        building a full portfolio from the template
 references/content-guide.md    the template's content fields
 references/portrait-rig.md     the template's living-portrait hero
@@ -54,11 +57,27 @@ screenshot it at intervals. Note the style (colour, light, type, background moti
 from the choreography (what moves when) — people usually want one or the other from a reference,
 and you should ask which if it isn't clear.
 
+**Settle the style before anything else.** The style changes every later decision — light,
+materials, colour, atmosphere, pacing — so it can't be left to a default. Read
+`references/styles.md`.
+- If the person named a style, showed a reference, or the request makes it unmistakable
+  ("photorealistic forest"), use that.
+- **Otherwise ask them, as a question with options**, before writing the spec. Use the
+  environment's question tool if there is one (a multiple-choice prompt), otherwise ask in text.
+  Offer the style families from `styles.md` with a one-line description each, put the one that
+  best fits their subject first and mark it recommended, and allow "describe your own / share a
+  reference". Ask nothing else in that message unless another answer is just as essential.
+- Only if you can't ask at all (a one-shot or automated run), pick the family that fits the
+  subject and say so under "Choices I made".
+
+Never fall back to the neon/glow look just because it's the house style — it's one option, for
+requests that call for it.
+
 ### 2. Translate it into a scene spec
 
 Read `references/scene-language.md`, then write the spec in the format from
-`references/scene-spec.md`. For every scene: the idea in one sentence, the objects, the house
-style or chosen look, and a **beat sheet** — what is on screen at each stretch of scroll (0–15%,
+`references/scene-spec.md`. For every scene: the idea in one sentence, the objects, the style
+(the family from step 1 with its concrete values), and a **beat sheet** — what is on screen at each stretch of scroll (0–15%,
 15–40%, …), with the camera move, the motion (verb + easing + duration), the light/colour change,
 the effects (particles, distortion, glow) and what the text does.
 
@@ -141,7 +160,10 @@ These come from real failures; each one has a reason in `architecture.md`.
 - WebGL loads client-only and pauses when its section is off-screen or the tab is hidden.
 - 3D and DOM text read the same timeline functions, so they can't drift apart.
 - Scroll-linked values inside pinned sections use function transforms, not range arrays.
-- Faked glow (additive halos), not post-processing bloom, unless the person accepts the cost.
+- The style is chosen by the person (or the subject), never defaulted to neon; and the scene
+  stays inside its style family — no glow lines in a realistic scene, no grime in a studio shot.
+- Where glow is part of the style, fake it (additive halos) rather than post-processing bloom,
+  unless the person accepts the cost.
 - All the page's content is real, readable text in the DOM — not baked into canvases only.
 - Never invent facts about a person or product in the copy; design text is fine, claims are not.
   Prices, specs, dates, stats and awards you weren't given go in as visible `[placeholders]`.
