@@ -14,7 +14,7 @@ No more rounds of *"no, not like that"*.
 ![React Three Fiber](https://img.shields.io/badge/React%20Three%20Fiber-9-orange)
 ![Framer Motion](https://img.shields.io/badge/Framer%20Motion-12-ff0055)
 
-<img src="docs/images/sneaker-3-ignition.jpg" alt="VOLT X sneaker scene built by the skill from a one-paragraph prompt" width="820" />
+<img src="docs/images/hero-ruin-door.jpg" alt="Ancient stone door opening onto a shaft of light in the fog, built by the skill in the realistic style" width="820" />
 
 <sub>Built by Claude with this skill from one paragraph: <i>"a sneaker that assembles itself from floating pieces as you scroll, then the camera circles it… make it feel futuristic"</i>.</sub>
 
